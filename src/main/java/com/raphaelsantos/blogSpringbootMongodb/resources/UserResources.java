@@ -1,5 +1,6 @@
 package com.raphaelsantos.blogSpringbootMongodb.resources;
 
+import com.raphaelsantos.blogSpringbootMongodb.domain.Post;
 import com.raphaelsantos.blogSpringbootMongodb.domain.User;
 import com.raphaelsantos.blogSpringbootMongodb.dto.UserDTO;
 import com.raphaelsantos.blogSpringbootMongodb.services.UserService;
@@ -52,5 +53,11 @@ public class UserResources {
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping(value = "/{id}/posts")
+	public ResponseEntity <List<Post>> findPosts(@PathVariable String id) {
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getPosts());
 	}
 }
