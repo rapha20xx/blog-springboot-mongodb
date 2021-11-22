@@ -1,5 +1,6 @@
 package com.raphaelsantos.blogSpringbootMongodb.domain;
 
+import com.raphaelsantos.blogSpringbootMongodb.dto.AuthDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,15 +23,15 @@ public class Post implements Serializable{
     private Date date;
     private String title;
     private String body;
-    private User authors;
+    private AuthDTO author;
 
-    public Post(String id, Date date, String title, String body, User authors) {
+    public Post(String id, Date date, String title, String body, AuthDTO author) {
         super();
         this.id = id;
         this.date = date;
         this.title = title;
         this.body = body;
-        this.authors = authors;
+        this.author = author;
     }
 
     @Override
